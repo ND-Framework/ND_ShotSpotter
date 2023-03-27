@@ -71,18 +71,18 @@ function triggerShotSpotter(ped)
     -- the alreadyShot variable is used for checking if the player has already shot and to add a cooldown until it turns to false.
     if alreadyShot then return end
     alreadyShot = true
-    Citizen.Wait(config.shotSpotterDelay * 1000)
+    Wait(config.shotSpotterDelay * 1000)
     local zoneName = GetLabelText(GetNameOfZone(pedCoords.x, pedCoords.y, pedCoords.z))
     local street = GetStreetNameFromHashKey(GetStreetNameAtCoord(pedCoords.x, pedCoords.y, pedCoords.z))
     TriggerServerEvent("ND_ShotSpotter:Trigger", street, pedCoords, postal, zoneName)
-    Citizen.Wait(config.shotSpotterCooldown * 1000)
+    Wait(config.shotSpotterCooldown * 1000)
     alreadyShot = false
 end
 
 -- Check if the player is shooting.
-Citizen.CreateThread(function()
+CreateThread(function()
     while true do
-        Citizen.Wait(0)
+        Wait(0)
         local ped = PlayerPedId()
         if IsPedShooting(ped) then
             triggerShotSpotter(ped)
@@ -122,7 +122,7 @@ RegisterNetEvent("ND_ShotSpotter:Report", function(street, pedCoords, postal)
         args = {"^*Dispatch ", msg}
     })
     EndTextCommandSetBlipName(blip)
-    Citizen.Wait(config.shotSpotterTimer * 1000)
+    Wait(config.shotSpotterTimer * 1000)
     RemoveBlip(blip)
     setRoute = false
     route = false
@@ -131,7 +131,7 @@ end)
 -- set route to latest shot spotter location.
 RegisterNetEvent("ND_shotSpotter:setRoute", function()
     while setRoute do
-        Citizen.Wait(0)
+        Wait(0)
         if IsControlJustPressed(0, 113) then
             if route then
                 route = false
@@ -146,8 +146,8 @@ RegisterNetEvent("ND_shotSpotter:setRoute", function()
 end)
 
 if config.testing then
-    Citizen.CreateThread(function()
-        Citizen.Wait(0)
+    CreateThread(function()
+        Wait(0)
         for k, v in pairs(config.realisticShotSpotterLocations) do
             k = AddBlipForRadius(v.x, v.y, v.z, 450.0)
             SetBlipAlpha(k, 100)
