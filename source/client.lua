@@ -1,6 +1,5 @@
 -- For support join my discord: https://discord.gg/Z9Mxu72zZ6
 
-NDCore = exports["ND_Core"]:GetCoreObject()
 local alreadyShot = false
 local setRoute = false
 local route = false
