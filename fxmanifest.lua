@@ -8,10 +8,13 @@ fx_version "cerulean"
 game "gta5"
 lua54 "yes"
 
+shared_script "@ND_Core/init.lua"
+
 server_scripts {
     "config_server.lua",
     "source/server.lua"
 }
+
 client_scripts {
     "config_client.lua",
     "source/client.lua"
