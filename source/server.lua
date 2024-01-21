@@ -3,7 +3,7 @@
 NDCore.Functions.VersionChecker("ND_ShotSpotter", GetCurrentResourceName(), "https://github.com/ND-Framework/ND_ShotSpotter", "https://raw.githubusercontent.com/ND-Framework/ND_ShotSpotter/main/fxmanifest.lua")
 
 RegisterNetEvent("ND_ShotSpotter:Trigger", function(street, pedCoords, postal, zoneName)
-    if server_config.useDiscordLogging then
+    if server_config.discordWebhook then
         local embed = {
             {
                 title = "ShotSpotter Alert",
