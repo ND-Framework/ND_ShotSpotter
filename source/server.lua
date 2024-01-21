@@ -1,6 +1,5 @@
 -- For support join my discord: https://discord.gg/Z9Mxu72zZ6
 
-NDCore = exports["ND_Core"]:GetCoreObject()
 NDCore.Functions.VersionChecker("ND_ShotSpotter", GetCurrentResourceName(), "https://github.com/ND-Framework/ND_ShotSpotter", "https://raw.githubusercontent.com/ND-Framework/ND_ShotSpotter/main/fxmanifest.lua")
 
 RegisterNetEvent("ND_ShotSpotter:Trigger", function(street, pedCoords, postal, zoneName)
